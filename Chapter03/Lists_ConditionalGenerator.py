@@ -14,4 +14,4 @@ def needed_for(meal, item):
 all_items = ["apples", "onions", "cereal", "milk", "bread", "bacon", "eggs"]
 l = [item for item in all_items if needed_for(breakfast, item)]
 
-print str(l)
+print l

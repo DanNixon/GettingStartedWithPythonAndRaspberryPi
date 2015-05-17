@@ -3,5 +3,5 @@
 d = {"name": "Keine", "Occupation": "Teacher"}
 
 print len(d)
-print str(d.keys())
-print str(d)
+print d.keys()
+print d

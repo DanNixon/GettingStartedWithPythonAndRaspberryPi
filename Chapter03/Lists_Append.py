@@ -7,11 +7,11 @@ l = []
 
 if "toast" in breakfast:
     l.append("bread")
-    
+
 if breakfast == "french_toast":
     l.append("eggs")
 elif breakfast == "cereal":
     l.append("milk")
     l.append("cereal")
-    
-print str(l)
+
+print l

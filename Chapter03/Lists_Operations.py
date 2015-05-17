@@ -15,7 +15,7 @@ print len(items)
 
 # Append items from another list
 items.extend(more_items)
-print str(items)
+print items
 
 # Getter
 print items[2]
@@ -32,12 +32,12 @@ print items.count("bread")
 
 # Insertion
 items.append('tea')
-print str(items)
+print items
 
 # Removal
 items.remove("honey")
-print str(items)
+print items
 
 # Sort
 items.sort()
-print str(items)
+print items

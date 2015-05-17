@@ -2,4 +2,4 @@
 
 l = ["apples", "milk", "bread", "eggs"]
 print len(l)
-print str(l)
+print l
