@@ -18,8 +18,8 @@ print os.path.basename(filename_in_homedir)
 # Check if a file or directory exists
 print os.path.exists(filename_in_homedir)
 
-# Expand the user's home directpory
-print os.path.expanduser("~/SampleFile.txt")
+# Get the size of a file or folder
+print os.path.getsize(filename_in_homedir)
 
 # Check if a path points to a file
 print os.path.isfile(filename_in_homedir)
@@ -30,6 +30,9 @@ print os.path.isdir(homedir)
 # Check if a path is a symbolic link
 print os.path.islink(homedir)
 
+# Expand the user's home directpory
+print os.path.expanduser("~/SampleFile.txt")
+
 # Joins two paths
 print os.path.join(homedir, "SampleFile.txt")
 
@@ -38,7 +41,3 @@ print os.path.split(filename_in_homedir)
 
 # Split the path and filename from the extension
 print os.path.splitext(filename_in_homedir)
-
-# Get the size of a file or folder
-print os.path.getsize(filename_in_homedir)
-
