@@ -1,5 +1,8 @@
 input metauml;
 
+outputformat := "svg";
+outputtemplate := "Chapter04_OOP.svg";
+
 beginfig(1);
     EClass.Object(iClassNameOnly)("object")()();
 
