@@ -20,7 +20,7 @@ class Calculator(object):
             operation = self._input_list[idx]
             next_value = self._input_list[idx + 1]
             self._result = operation.evaluate(self._result, next_value)
-        
+
         return self._result
 
     def get_result(self):
