@@ -1,12 +1,6 @@
-#!/usr/bin/env python
-
 import logging
 import threading
 import time
-
-# Set up a logger to output to
-logging.basicConfig(level=logging.INFO,
-                    format="%(asctime)s (T:%(thread)d):- %(message)s")
 
 class MessagePrinter(threading.Thread):
     """
@@ -17,16 +11,28 @@ class MessagePrinter(threading.Thread):
         threading.Thread.__init__(self)
         self._args = args
         self._kwargs = kwargs
+        self._lock = kwargs.get("lock", None)
 
     def run(self):
         for message in self._args:
-            logging.info(message)
+            # If we have a lock object then try to acquire the lock first
+            if self._lock:
+                self._lock.acquire()
+                
+            print message
+
+            # If we have a lock object then now release it
+            if self._lock:
+                self._lock.release()
+                
             time.sleep(self._kwargs.get("delay", 1.0))
 
+# Set up a lock to synchronize the print statements
+lock = None #threading.Lock()
 
 # Set up two message printer objects
-mp1 = MessagePrinter("Hello", "Good day!")
-mp2 = MessagePrinter("A", "B", "C", delay=3)
+mp1 = MessagePrinter("Hello", "Good day!", lock=lock)
+mp2 = MessagePrinter("A", "B", "C", delay=3, lock=lock)
 
 # Start each of them on their own thread
 mp1.start()
