@@ -32,19 +32,19 @@ beginfig(1);
         Operation
         );
 
-    Group.subclasses(
+    Group.subClasses(
         Calculator,
         Operation
         );
 
     topToBottom(20)(
         Object,
-        subclasses
+        subClasses
         );
 
     drawObjects(
         Object,
-        subclasses
+        subClasses
         );
 
     link(inheritance)(Calculator.n -- Object.s);
