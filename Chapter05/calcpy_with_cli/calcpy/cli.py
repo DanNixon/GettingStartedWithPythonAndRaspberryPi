@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from calcpy.calculator.Calculator import Calculator
 import sys
 
@@ -13,3 +15,7 @@ def run_cli():
 
     result = calc.evaluate()
     print result
+
+
+if __name__ == "__main__":
+    run_cli()
