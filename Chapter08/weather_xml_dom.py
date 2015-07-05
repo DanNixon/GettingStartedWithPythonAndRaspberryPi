@@ -37,14 +37,13 @@ for forecast in forecasts:
     overview_string = overview.getAttribute('name')
 
     temperature = forecast.getElementsByTagName('temperature')[0]
-    temp_string = '?'
+    temperature_string = '?'
     if temperature.hasAttribute('value'):
         # Convert from Kelvin to Celsius
         # (I'm sure the API is wrong when it claims the unit is already Celsius)
-        temp_string = '%.1f' % (float(temperature.getAttribute('value')) - 273.15)
-
+        temperature_string = '%.1f' % (float(temperature.getAttribute('value')) - 273.15)
 
     print u'%s: %s, %s°C' % (
             time_string,
             overview_string,
-            temp_string)
+            temperature_string)
