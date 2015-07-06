@@ -22,8 +22,7 @@ def get_rates(from_curr, to_currs):
     api_url = URL_TEMLATE.substitute(from_curr=from_curr,
                                      to_curr=target_currencies)
 
-    request = urllib2.Request(api_url)
-    response = urllib2.urlopen(request)
+    response = urllib2.urlopen(api_url)
 
     json_response = response.read()
     result = json.loads(json_response)

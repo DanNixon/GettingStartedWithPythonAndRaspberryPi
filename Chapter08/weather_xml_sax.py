@@ -69,8 +69,7 @@ URL_TEMLATE = Template('http://api.openweathermap.org/data/2.5/forecast?q=${loca
 search_location = sys.argv[1]
 api_url = URL_TEMLATE.substitute(location=search_location)
 
-request = urllib2.Request(api_url)
-response = urllib2.urlopen(request)
+response = urllib2.urlopen(api_url)
 xml_response = response.read()
 
 content_handler = WeatherHandler()
