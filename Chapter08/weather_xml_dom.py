@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from datetime import datetime
-import urllib
 import urllib2
 from string import Template
 import sys
