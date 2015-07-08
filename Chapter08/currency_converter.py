@@ -7,7 +7,6 @@ import sys
 
 
 URL_TEMLATE = Template('http://api.fixer.io/latest?base=${from_curr}&symbols=${to_curr}')
-RESULT_TEMPLATE = Template('${symbol}\t\t${rate}\t${value}')
 
 
 def get_rates(from_curr, to_currs):
