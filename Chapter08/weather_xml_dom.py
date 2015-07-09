@@ -6,7 +6,6 @@ from datetime import datetime
 import urllib2
 from string import Template
 import sys
-from xml.dom.minidom import parse
 import xml.dom.minidom
 
 
