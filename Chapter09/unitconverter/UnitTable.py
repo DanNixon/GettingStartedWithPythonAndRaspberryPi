@@ -4,9 +4,9 @@ class UnitTable(object):
     volume, mass)
     """
 
-    _base_unit = None
-    _to_base_unit = dict()
-    _from_base_unit = dict()
+    base_unit = None
+    to_base_unit = dict()
+    from_base_unit = dict()
 
 
     def convert(self, source, dest, value):
@@ -22,11 +22,11 @@ class UnitTable(object):
         if not (self.can_convert(source) and self.can_convert(dest)):
             raise ValueError('Cannot convert given units')
 
-        if source != self._base_unit:
-            value = self._to_base_unit[source](value)
+        if source != self.base_unit:
+            value = self.to_base_unit[source](value)
 
-        if dest != self._base_unit:
-            value = self._from_base_unit[dest](value)
+        if dest != self.base_unit:
+            value = self.from_base_unit[dest](value)
 
         return value
 
@@ -38,8 +38,8 @@ class UnitTable(object):
         @return List of valid units
         """
 
-        convertable_units = set(self._to_base_unit.keys()) & set(self._from_base_unit.keys())
-        convertable_units.add(self._base_unit)
+        convertable_units = set(self.to_base_unit.keys()) & set(self.from_base_unit.keys())
+        convertable_units.add(self.base_unit)
         return convertable_units
 
 

@@ -1,4 +1,5 @@
 import argparse
+import inspect
 from Converter import get_table, convert_units
 
 
@@ -17,6 +18,12 @@ def run_cli():
 
     list_table_parser = subparsers.add_parser('list')
     list_table_parser.set_defaults(which='list')
+
+    list_table_parser.add_argument(
+        '-m', '--method',
+        action='store_true',
+        help='Also output the conversion method from the base unit'
+    )
 
     conversion_parser = subparsers.add_parser('convert')
     conversion_parser.set_defaults(which='convert')
@@ -62,8 +69,17 @@ def _run_unit_list(props):
     """
 
     table = get_table(props.table)
-    print 'Unit table %s can convert between the units: %s' % (
-           props.table, ', '.join(table.get_units()))
+    print 'Unit table %s can convert between the units:'
+    for unit in table.get_units():
+        if props.method:
+            if unit == table.base_unit:
+                formula = 'base unit'
+            else:
+                conversion = inspect.getsource(table.from_base_unit[unit])
+                formula = conversion[conversion.index(':')+1:conversion.index('\n')].strip()
+            print '%s (%s)' % (unit, formula)
+        else:
+            print unit
 
 
 def _run_conversion(props):
