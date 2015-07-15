@@ -8,15 +8,15 @@ beginfig(1);
         ()
         (
         "+run_cli(): void",
-        "+run_conversion(): void",
-        "+run_list_units() :void"
+        "+run_unit_list(Namespace): void",
+        "+run_conversion(Namespace) :void"
         );
 
     Class.Converter("unitconverter.Converter")
         ()
         (
-        "+get_table(name): UnitTable",
-        "+get_conversions(): list"
+        "+get_table(str): UnitTable",
+        "+convert_units(str, float, str, list): list"
         );
 
     Class.UnitTable("unitconverter.UnitTable")
@@ -26,8 +26,9 @@ beginfig(1);
         "+from_base_unit: dict"
         )
         (
-        "+can_convert(): bool",
-        "+convert(): dict"
+        "+convert(str, str, float): float",
+        "+get_units(): list",
+        "+can_convert(str): bool",
         );
 
     EClass.Angle(iClassNameOnly)("angle")()();
