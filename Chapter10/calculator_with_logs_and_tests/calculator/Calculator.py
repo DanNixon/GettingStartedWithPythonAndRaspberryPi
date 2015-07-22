@@ -26,6 +26,9 @@ class Calculator(object):
     def evaluate(self):
         logging.getLogger(__name__).info("Evaluating calculation")
 
+        if len(self._input_list) % 2 == 0:
+            raise RuntimeError("Input length mismatch")
+
         self._result = self._input_list[0]
         for idx in range(1, len(self._input_list), 2):
             operation = self._input_list[idx]
