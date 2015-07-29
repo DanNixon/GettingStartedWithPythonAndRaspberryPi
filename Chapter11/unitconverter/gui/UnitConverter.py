@@ -17,19 +17,36 @@ class UnitConverter(QMainWindow, ui_UnitConverter):
 
         self.action_Exit.triggered.connect(QApplication.exit)
         self.cbUnitTable.currentIndexChanged[str].connect(self.unit_table_selected)
-        self.cbSourceUnit.currentIndexChanged[str].connect(self.source_unit_selected)
-        self.cbDestUnit.currentIndexChanged[str].connect(self.dest_unit_selected)
-        self.sbSourceValue.valueChanged.connect(self.source_value_changed)
+        self.cbSourceUnit.currentIndexChanged[str].connect(self.calculate)
+        self.cbDestUnit.currentIndexChanged[str].connect(self.calculate)
+        self.sbSourceValue.valueChanged.connect(self.calculate)
+
+        self.unit_table_selected(self.cbUnitTable.currentText())
+
 
     def unit_table_selected(self, table_name):
         table = get_table(str(table_name))
-        print table.get_units()
+        units = table.get_units()
 
-    def source_unit_selected(self, unit_name):
-        print unit_name
+        self.cbSourceUnit.blockSignals(True)
+        self.cbDestUnit.blockSignals(True)
 
-    def dest_unit_selected(self, unit_name):
-        print unit_name
+        self.cbSourceUnit.clear()
+        self.cbDestUnit.clear()
 
-    def source_value_changed(self, value):
-        print value
+        for unit in units:
+            self.cbSourceUnit.addItem(unit)
+            self.cbDestUnit.addItem(unit)
+
+        self.cbSourceUnit.blockSignals(False)
+        self.cbDestUnit.blockSignals(False)
+
+
+    def calculate(self):
+        table = get_table(str(self.cbUnitTable.currentText()))
+        source_value = self.sbSourceValue.value()
+        source_unit = str(self.cbSourceUnit.currentText())
+        dest_unit = str(self.cbDestUnit.currentText())
+
+        result_value = table.convert(source_unit, dest_unit, source_value)
+        self.leDestValue.setText(str(result_value))
