@@ -16,7 +16,43 @@
   <widget class="QWidget" name="mainWIdget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="2">
-     <widget class="QComboBox" name="cbUnitTable"/>
+     <widget class="QComboBox" name="cbUnitTable">
+      <item>
+       <property name="text">
+        <string>angle</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>energy</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>length</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>mass</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>speed</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>temperature</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>time</string>
+       </property>
+      </item>
+     </widget>
     </item>
     <item row="0" column="1">
      <widget class="QLabel" name="lbUnitTable">

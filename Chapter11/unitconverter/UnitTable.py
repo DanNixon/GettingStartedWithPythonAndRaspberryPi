@@ -4,9 +4,10 @@ class UnitTable(object):
     volume, mass)
     """
 
-    base_unit = None
-    to_base_unit = dict()
-    from_base_unit = dict()
+    def __init__(self):
+        self.base_unit = None
+        self.to_base_unit = {}
+        self.from_base_unit = {}
 
 
     def convert(self, source, dest, value):
