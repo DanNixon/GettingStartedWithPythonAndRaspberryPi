@@ -17,7 +17,7 @@ class ImageCapture(Thread):
         Thread.__init__(self)
         self._filename = filename
         self._delay = delay
-        self._resolution = [resolution if resolution is not None else (1024, 768)][0]
+        self._resolution = resolution if resolution is not None else (1024, 768)
 
     def run(self):
         with PiCamera() as cam:
